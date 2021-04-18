@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+#{version}
+#{name}
+#{icon}
+#{exec}
+#{comment}
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-rider
