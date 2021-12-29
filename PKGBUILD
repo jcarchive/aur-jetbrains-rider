@@ -1,7 +1,7 @@
 # Maintainer: Jose C.
 
 pkgname=jetbrains-rider
-pkgver='2021.1.2'
+pkgver='2021.3.2'
 pkgrel=1
 pkgdesc='JetBrains Rider is a cross-platform .NET IDE based on the IntelliJ platform'
 arch=('x86_64')
@@ -16,29 +16,20 @@ _filename="JetBrains.Rider-${pkgver}.tar.gz"
 _filextract="JetBrains Rider-${pkgver}"
 
 
-source=("https://download-cf.jetbrains.com/rider/${_filename}" 
+source=("https://download.jetbrains.com/rider/${_filename}"
 	"${pkgname}.desktop")
 
-sha256sums=( '55a911cffe0f948b5f271482e7fc14ee69fcd27376070e3b178b018942bc48a8'
-	'1f8d462739189235996cf50e158570d9e992125fa0674e70cb4d9fd3658e85ce')
+sha256sums=( '56699bf27289866d56e63d76b2f63d57cee02cc00034f52896e4204e7982362b'
+	'56393c9688b46f4fcb709c09dd33d24f675c4fc647fbf160f14302dc55a5c1ef')
 
 package() {
-	cd "${srcdir}"
-
 	#Create directories with permission rwxr-xr-x
-	install -d -m755 "${pkgdir}/usr/share" 
-	install -d -m755 "${pkgdir}/usr/bin"
-	install -d -m755 "${pkgdir}/usr/share/applications"
+	install -m755 -d "${pkgdir}/usr/share" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications"
 
 	#Copy files to pkg destination
-	cp -a "${_filextract}" "${pkgdir}/usr/share/${pkgname}"
-	chown -R root:root "${pkgdir}/usr/share/${pkgname}"
+	cp -r "${srcdir}/${_filextract}" "${pkgdir}/usr/share/${pkgname}"
+  chown -R root:root "${pkgdir}/usr/share/${pkgname}"
 
 	ln -s "/usr/share/${pkgname}/bin/rider.sh" "${pkgdir}/usr/bin/rider"
-	sed -i "s#\#{name}#Name=${_filextract}#g" "${pkgname}.desktop"
-    	sed -i "s#\#{icon}#Icon=/user/share/${pkgname}/bin/rider.png#g" "${pkgname}.desktop"
-    	sed -i "s#\#{exec}#Exec=\"/user/share/${pkgname}/bin/rider.sh\" %f#g" "${pkgname}.desktop"
-    	sed -i "s/#{comment}/Comment=${pkgdesc}/g" "${pkgname}.desktop"
-    	install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
-
+  install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
 }

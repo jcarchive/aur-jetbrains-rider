@@ -1,10 +1,18 @@
 [Desktop Entry]
 Type=Application
-#{version}
-#{name}
-#{icon}
-#{exec}
-#{comment}
+Version=2021.3.2
+
+Name=Rider
+GenericName=.NET IDE 
+
+Icon=/usr/share/jetbrains-rider/bin/rider.png
+Comment=IDE for .net development
+Keywords=development;dotnet;ide;.net;
 Categories=Development;IDE;
+
 Terminal=false
+StartupNotify=true
 StartupWMClass=jetbrains-rider
+X-MultipleArgs=false
+Exec=/usr/share/jetbrains-rider/bin/rider.sh
+
