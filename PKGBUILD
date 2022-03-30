@@ -1,7 +1,7 @@
 # Maintainer: Jose C.
 
 pkgname=jetbrains-rider
-pkgver='2021.3.3'
+pkgver='2021.3.4'
 pkgrel=1
 pkgdesc='JetBrains Rider is a cross-platform .NET IDE based on the IntelliJ platform'
 arch=('x86_64')
@@ -18,8 +18,8 @@ _filextract="JetBrains Rider-${pkgver}"
 source=("https://download.jetbrains.com/rider/${_filename}"
 	"${pkgname}.desktop")
 
-sha256sums=( '1dc57d5d7932d4a8dea51fc5cbdaa52f9626490092978f02fa15bb41cb84068f'
-	'193f632d75e0810d3bf94673aae99faa01fb5f13b891cd694e7c87dcd08db8b1')
+sha256sums=( '12133cbffe133662817cbaccdf63955261e686aa40db402baa99e374ace2403c'
+	'8c3ee04d78fddf62d70d2aeba6e8deda5246fe0fd4e4f88969639d0e230a9ef6')
 
 package() {
 	#Create directories with permission rwxr-xr-x
